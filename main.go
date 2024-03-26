@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 	"time"
 )
 
@@ -44,10 +46,30 @@ func main() {
 	c1 := make(chan Address)
 	c2 := make(chan Address)
 
-	for _, cep := range os.Args[1:] {
-		go SearchInViaCep(cep, c1)
-		go SearchInBrasilApi(cep, c2)
+	var search string
+	for _, i := range os.Args[1:] {
+		search = search + i
 	}
+
+	// VALIDAÇÃO DO CEP DIGITADO
+	// REMOVER O HÍFEN, SE HOUVER
+	search = strings.Replace(search, "-", "", 1)
+	// SE É APENAS NÚMEROS
+	match, _ := regexp.MatchString("[0-9]", search)
+	if !match {
+		fmt.Printf("Informe um CEP Válido. Exemplo: go run main.go 13330-250\n")
+		fmt.Printf("Consulte o README.md\n")
+		return
+	}
+	// SE POSSUÍ O NUMERO CORRETO DE CARACTERES
+	if search == "" || len(search) != 8 {
+		fmt.Printf("Informe um CEP. Exemplo: go run main.go 13330-250\n")
+		fmt.Printf("Consulte o README.md\n")
+		return
+	}
+
+	go SearchInViaCep(search, c1)
+	go SearchInBrasilApi(search, c2)
 
 	select {
 	case msg := <-c1:
