@@ -102,12 +102,15 @@ func SearchInViaCep(cep string, ch chan Address) {
 	// PARA TESTE
 	// time.Sleep(time.Second * 2)
 
-	ch <- Address{
-		Cep:          data.Cep,
-		State:        data.State,
-		City:         data.City,
-		Neighborhood: data.Neighborhood,
-		Street:       data.Street,
+	// CASO NÃO ENCONTRE O CEP
+	if data.Cep != "" {
+		ch <- Address{
+			Cep:          data.Cep,
+			State:        data.State,
+			City:         data.City,
+			Neighborhood: data.Neighborhood,
+			Street:       data.Street,
+		}
 	}
 }
 
@@ -132,11 +135,14 @@ func SearchInBrasilApi(cep string, ch chan Address) {
 	// PARA TESTE
 	// time.Sleep(time.Second * 2)
 
-	ch <- Address{
-		Cep:          data.Cep,
-		State:        data.State,
-		City:         data.City,
-		Neighborhood: data.Neighborhood,
-		Street:       data.Street,
+	// CASO NÃO ENCONTRE O CEP
+	if data.Cep != "" {
+		ch <- Address{
+			Cep:          data.Cep,
+			State:        data.State,
+			City:         data.City,
+			Neighborhood: data.Neighborhood,
+			Street:       data.Street,
+		}
 	}
 }
