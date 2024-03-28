@@ -73,9 +73,9 @@ func main() {
 
 	select {
 	case msg := <-c1:
-		fmt.Printf("Resultado encontrado: %v - %v (Fonte: ViaCep)\n", msg.City, msg.State)
+		fmt.Printf("Resultado encontrado: %v, %v, %v - %v (Fonte: ViaCep)\n", msg.Street, msg.Neighborhood, msg.City, msg.State)
 	case msg := <-c2:
-		fmt.Printf("Resultado encontrado: %v - %v (Fonte: BrasilAPI)\n", msg.City, msg.State)
+		fmt.Printf("Resultado encontrado: %v, %v, %v - %v (Fonte: BrasilAPI)\n", msg.Street, msg.Neighborhood, msg.City, msg.State)
 	case <-time.After(time.Second):
 		fmt.Println("Timeout")
 	}
