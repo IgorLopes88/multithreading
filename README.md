@@ -11,13 +11,13 @@ Se digitar um **CEP VÁLIDO**, a resposta deverá ser a cidade e o estado, segui
 Como mostrada abaixo:
 
 ```
-Resultado encontrado: Indaiatuba - SP (Fonte: ViaCep)
+Resultado encontrado: Rua Hércules Mazzoni, Centro, Indaiatuba - SP (Fonte: ViaCep)
 ```
 
 ou
 
 ```
-Resultado encontrado: Indaiatuba - SP (Fonte: BrasilAPI)
+Resultado encontrado: Rua Hércules Mazzoni, Centro, Indaiatuba - SP (Fonte: BrasilAPI)
 ```
 
 
